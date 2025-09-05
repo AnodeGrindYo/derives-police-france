@@ -1,0 +1,295 @@
+/* General reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #0A0A7D; /* Darker, more saturated official blue */
+    --secondary-blue: #0056b3; /* A vibrant, yet official blue */
+    --accent-red: #E2001A; /* A strong, official red */
+    --neutral-light-grey: #f8f8f8;
+    --neutral-grey: #e0e0e0;
+    --dark-grey: #2c3e50; /* For footer and strong text */
+    --text-color: #343a40; /* Darker text for readability */
+    --link-color: var(--secondary-blue);
+    --link-hover-color: #003d80;
+    --white: #ffffff;
+    --border-color: #dee2e6;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Base styles */
+body {
+    font-family: 'Marianne', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--neutral-light-grey);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px; /* Increased max-width for modern feel */
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent horizontal padding */
+}
+
+/* Header */
+.site-header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 25px 0; /* More padding */
+    text-align: center;
+    border-bottom: 8px solid var(--accent-red); /* Thicker border */
+    box-shadow: var(--box-shadow);
+}
+
+.site-header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Increased gap */
+}
+
+.site-logo {
+    height: 90px; /* Slightly larger logo */
+    margin-bottom: 5px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4)); /* Stronger shadow */
+}
+
+.site-title {
+    font-size: 2.8em; /* Larger title */
+    margin: 0;
+    font-weight: 800; /* Bolder */
+    letter-spacing: -0.5px;
+}
+
+.site-tagline {
+    font-size: 1.25em; /* Larger tagline */
+    margin: 0;
+    font-style: normal; /* Remove italic, use normal official tone */
+    font-weight: 300; /* Lighter weight for tagline */
+    opacity: 0.95;
+    max-width: 80%; /* Constrain width */
+}
+
+/* Page Content Wrapper */
+.page-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for mobile */
+    gap: 30px;
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* Table of Contents (TOC) */
+.table-of-contents {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    position: sticky; /* Make it sticky */
+    top: 20px; /* Distance from top */
+    align-self: start; /* Align to the start of the grid cell */
+    max-height: calc(100vh - 40px); /* Limit height for scrolling */
+    overflow-y: auto; /* Enable scrolling for long TOCs */
+}
+
+.table-of-contents h2 {
+    font-size: 1.5em;
+    color: var(--primary-blue);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--neutral-grey);
+    padding-bottom: 10px;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+}
+
+.table-of-contents li {
+    margin-bottom: 12px;
+    padding-left: 0;
+    position: relative;
+    font-size: 0.95em;
+}
+
+.table-of-contents li::before {
+    content: ''; /* Remove custom bullet, use default list style or flex for icon */
+}
+
+.table-of-contents a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block; /* Make the whole area clickable */
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.table-of-contents a:hover,
+.table-of-contents a:focus {
+    background-color: var(--neutral-grey);
+    color: var(--primary-blue);
+    text-decoration: none;
+    outline: none; /* Remove default outline for aesthetic, but add custom focus state */
+}
+
+/* Main Content */
+.main-content {
+    background-color: var(--white);
+    padding: 40px; /* More padding */
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+}
+
+.content-section {
+    margin-bottom: 40px; /* More space between sections */
+    padding-bottom: 20px; /* Space before next section's content */
+    border-bottom: 1px dashed var(--neutral-grey); /* Subtle separator */
+}
+
+.content-section:last-of-type {
+    border-bottom: none; /* No border for the last section */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: 2.2em; /* Larger section titles */
+    color: var(--primary-blue);
+    border-bottom: none; /* Remove solid border, maybe a subtle one or just space */
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 25px; /* More space below title */
+    font-weight: 700;
+}
+
+/* Lists and links in main content */
+.main-content ul {
+    list-style: none; /* Still no default bullet points */
+    padding: 0;
+}
+
+.main-content li {
+    margin-bottom: 12px; /* Slightly less space for tighter lists */
+    padding-left: 28px; /* Indent for custom bullet */
+    position: relative;
+}
+
+.main-content li::before {
+    content: '•';
+    color: var(--accent-red);
+    position: absolute;
+    left: 0;
+    font-size: 1.4em; /* Larger bullet */
+    line-height: 1.6;
+    top: -2px; /* Adjust vertical position */
+    font-weight: bold;
+}
+
+.main-content li a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.main-content li a:hover,
+.main-content li a:focus {
+    text-decoration: underline;
+    color: var(--link-hover-color);
+    outline: none;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--dark-grey);
+    color: var(--neutral-light-grey); /* Lighter text for contrast */
+    text-align: center;
+    padding: 25px 0; /* More padding */
+    margin-top: 40px; /* More space above footer */
+    font-size: 0.95em;
+    border-top: 5px solid var(--accent-red); /* Consistent accent color */
+}
+
+.site-footer a {
+    color: var(--neutral-light-grey);
+    text-decoration: none;
+    margin: 0 12px;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+    color: var(--white);
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) { /* Desktop layout */
+    .page-content-wrapper {
+        grid-template-columns: 280px 1fr; /* Two columns: fixed width for nav, fluid for content */
+    }
+    .table-of-contents {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 991px) { /* Tablet and smaller */
+    .table-of-contents {
+        position: static; /* No sticky nav on smaller screens */
+        max-height: none;
+        overflow-y: visible;
+        margin-bottom: 30px;
+    }
+    .page-content-wrapper {
+        grid-template-columns: 1fr; /* Single column */
+        padding-top: 0;
+    }
+    .main-content {
+        padding: 25px;
+    }
+    .site-title {
+        font-size: 2.2em;
+    }
+    .site-tagline {
+        font-size: 1.1em;
+        max-width: 90%;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .site-logo {
+        height: 70px;
+    }
+}
+
+@media (max-width: 576px) { /* Mobile specific adjustments */
+    .container {
+        padding: 0 15px;
+    }
+    .site-header {
+        padding: 15px 0;
+    }
+    .site-logo {
+        height: 55px;
+    }
+    .site-title {
+        font-size: 1.7em;
+    }
+    .site-tagline {
+        font-size: 0.95em;
+        max-width: 100%;
+    }
+    .main-content {
+        padding: 15px;
+    }
+    .section-title {
+        font-size: 1.4em;
+    }
+    .table-of-contents h2 {
+        font-size: 1.3em;
+    }
+}
